@@ -19,4 +19,5 @@ ALTER COLUMN password TYPE TEXT;
 INSERT INTO users 
 (username, password, profile_pic)
 VALUES
-($1, $2, $3);
+('Draked8', 'bnefpibneqbirnwbgiwn', null),
+('Chase37', 'ivenfvienrvinebrviqv', null);

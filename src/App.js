@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import './App.css';
 
 function App(props) {
-  console.log(props)
   return (
     <div>
       <Nav />

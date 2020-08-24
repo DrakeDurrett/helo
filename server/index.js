@@ -7,13 +7,16 @@ const app = express();
 
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 
-app.use(express.json);
+app.use(express.json());
 app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
     secret: SESSION_SECRET
 }))
+
+app.post('/api/auth/register', ctrl.register);
+app.post('/api/auth/login', ctrl.login);
 
 massive({
     connectionString: CONNECTION_STRING,
@@ -25,6 +28,5 @@ massive({
     console.log('connected to db')
 }).catch(err => console.log(err));
 
-app.post('/api/auth/register', ctrl.register);
 
 app.listen(SERVER_PORT, () => console.log(`Running on port ${SERVER_PORT}`));
